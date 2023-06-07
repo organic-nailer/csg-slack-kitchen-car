@@ -1,0 +1,26 @@
+{
+  "name": "csg-slack-kitchen-car",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "debug": "npm run build && functions-framework --source=dist --target=helloHttp",
+    "prestart": "npm run build",
+    "gcp-build": "npm run build",
+    "deploy": "npm run build && gcloud functions deploy sendTodayKitchenCar --gen2 --trigger-topic=kitchen-car --region=asia-northeast1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.2.0",
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.31",
+    "typescript": "^5.0.4"
+  }
+}
