@@ -20,6 +20,11 @@ ff.cloudEvent("helloPubSub", (cloudEvent) => {
     throw new Error("SLACK_ENDPOINT is undefined");
   }
   getKitchenCars().then((kitchenCars) => {
+    // if no kitchen car, do nothing
+    if (kitchenCars.length === 0) {
+      console.log("no kitchen car today");
+      return;
+    }
     // send to slack
     const todayStr = new Date().toLocaleDateString("ja-JP", {
       timeZone: "Asia/Tokyo",
